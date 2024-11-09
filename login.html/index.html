@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goCode</title>
+    <style>
+html, body {
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.pexels.com/photos/939331/pexels-photo-939331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    transition: background-image 0.5s ease;
+}
+}
+
+@supports not (background-image: url('https://images.pexels.com/photos/939331/pexels-photo-939331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')) {
+    body {
+        background-image: url('https://images.pexels.com/photos/939331/pexels-photo-939331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: none;
+            color: black;
+            position: relative;
+        }
+
+        nav {
+            background-color: none;
+            color: #1dd849;
+            width: 100%;
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            margin-top: -20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1212de;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a i {
+            margin-right: 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #780bf5;
+            color: rgb(0, 3, 6);
+        }
+
+        .search-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 50%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .content-section {
+            display: none;
+            padding: 10px;
+            background-color: none;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: black;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            color: rgb(11, 155, 199);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 9px;
+            padding: 2px;
+            background-color: black;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .about-us-footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .about-us-footer h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: burlywood;
+        }
+
+        .about-us-footer p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: wheat;
+        }
+
+        .about-us-footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .about-us-footer .footer-links a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .about-us-footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            background: rgb(27, 179, 225);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(40, 2, 205, 0.1);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        label {
+            margin-left: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            margin-right: 10px;
+            width: calc(100% - 20px);
+            height: 20px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        #your-color {
+            color: black;
+            font-size: 20px;
+        }
+
+        .special {
+            text-align: center;
+        }
+
+        button {
+            border: none;
+            background-color: rgb(3, 41, 20);
+            color: rgb(16, 85, 235);
+            width: 100%;
+            height: 25px;
+            margin-top: 10px;
+        }
+
+        #middle {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .icons {
+            text-align: center;
+            border: 2px solid rgb(220, 220, 220);
+            line-height: 21px;
+            margin: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        i {
+            margin: 10px;
+        }
+
+        .error-message {
+            color: black;
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100vh;
+                background-color: palegreen;
+                transition: all 0.3s ease;
+                z-index: 10;
+                padding-top: 60px;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                order: -1;
+            }
+
+            .menu-toggle i {
+                font-size: 1.5rem;
+                color: #fff;
+                margin-right: 10px;
+            }
+
+            nav ul li {
+                margin: 20px;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+        }
+
+        .spinner-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4CAF50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .contact-form-container {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .contact-form-container.active {
+            display: block;
+        }
+
+        .contact-form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .contact-form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form-container input,
+        .contact-form-container textarea {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .contact-form-container button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/images/href.webp" type="image/webp">
+</head>
+
+<body>
+    <header>
+        <div class="logo" style="flex: 1;">
+            <h1>&lt;goCode&gt;</h1>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="toggleContent('home')"><i class="fas fa-home"></i> home</a></li>
+            <li><a href="#" onclick="toggleContent('notifications')"><i class="fas fa-bell"></i> notifications</a></li>
+            <li><a href="#" onclick="toggleContent('services')"><i class="fas fa-concierge-bell"></i> services</a></li>
+            <li><a href="#" onclick="toggleContent('settings')"><i class="fas fa-cog"></i> settings</a></li>
+            <li><a href="#" onclick="toggleContent('help')"><i class="fas fa-question-circle"></i> help</a></li>
+        </ul>
+    </nav>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search..." oninput="handleSearch()">
+    </div>
+    <main>
+        <div id="home" class="content-section active">
+            <h2>home</h2>
+            <p>we make your dreams come true at goCode where you learn, code, grow, and build.</p>
+        </div>
+        <div id="notifications" class="content-section">
+            <h2>notifications</h2>
+            <p>Here are your notifications.</p>
+        </div>
+        <div id="services" class="content-section">
+            <h2>services</h2>
+            <ul>
+                <li>Front-end development</li>
+                <li>Back-end development</li>
+                <li>Coding assignments for students</li>
+                <li>Web development</li>
+                <li>UI/UX design</li>
+                <li>Mobile Android development</li>
+                <li>Graphic design</li>
+            </ul>
+        </div>
+        <div id="settings" class="content-section">
+            <h2>settings</h2>
+            <p>Adjust your preferences here.</p>
+        </div>
+        <div id="help" class="content-section">
+            <h2>help</h2>
+            <p>How can we assist you?</p>
+        </div>
+        <div class="form-container">
+            <form id="login-form" action="html.services" method="post" title="LOGIN-page">
+                <div class="main-word">
+                    <span>LOGIN </span>
+                    <p>DONT HAVE AN ACCOUNT? <span id="your-color"><b>CREATE ACCOUNT AND SIGN UP</b></span></p>
+                </div>
+                <table>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td><input type="text" id="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password</label></td>
+                        <td><input type="password" id="password" name="password" required></td>
+                    </tr>
+                </table>
+                <div class="special">
+                    <button type="submit" value="Login" title="login-page">Login</button>
+                    <div id="middle">--------------- OR ---------------</div>
+                </div>
+                <div class="icons">
+                    <p><a href="/auth/google"><i class="fab fa-google fa-lg" style="color: blueviolet;"></i> Continue
+                            with Google</a></p>
+                    <p><a href="/auth/facebook"><i class="fab fa-facebook fa-lg" style="color: blue;"></i> Sign in with
+                            Facebook</a></p>
+                    <p><a href="/auth/linkedin"><i class="fab fa-linkedin fa-lg" style="color: chartreuse;"></i> Sign in
+                            with LinkedIn</a></p>
+                </div>
+                <p id="error-message" class="error-message">Password must contain at least 8 characters.</p>
+            </form>
+        </div>
+    </main>
+
+    <div class="contact-form-container" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <div class="spinner-container" id="spinner-container">
+        <div class="spinner"></div>
+    </div>
+    <footer>
+        <p>&copy; 2024 goCode. All rights reserved.</p>
+        <div class="about-us-footer">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>dedicated to providing the best coding education and services. Our mission is to empower
+                    individuals with the skills they need to succeed in the tech industry.</p>
+                <div class="footer-links">
+                    <section id="#contact">
+                        <div class="container">
+                            <div class="contact-left">
+                                <h1>Contact us</h1>
+                                <p><i class="fas fa-envelope"></i> gocodeservices@gmail.com</p>
+                                <p><i class="fas fa-envelope"></i> kipngenogregory@gmail.com</p>
+                                <p><i class="fas fa-phone"></i> +254748163492</p>
+                                <h1>follow us on :</h1>
+                                <div class="social-icons">
+                                    <a href="https://x.com/GregoryKipngeno/media"><i
+                                            class="fa-brands fa-twitter"></i></a>
+                                    <a href="https://instagram.com/gocodeservices"><i class="fab fa-instagram"></i></a>
+                                    <a
+                                        href="https://www.linkedin.com/company/104825584"><i
+                                            class="fab fa-linkedin"></i></a>
+                                    <a href="https://github.com/gregory347"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+    </footer>
+    <script>
+        function toggleContent(sectionId) {
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function (section) {
+                section.classList.remove('active');
+                section.style.opacity = '0';
+            });
+            var section = document.getElementById(sectionId);
+            section.classList.add('active');
+            setTimeout(function () {
+                section.style.opacity = '1';
+            }, 10);
+
+            var navUl = document.querySelector('nav ul');
+            navUl.classList.remove('active');
+        }
+
+        function handleSearch() {
+            let input = document.getElementById('searchInput').value.toUpperCase();
+            let sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                let text = section.innerText.toUpperCase();
+                section.style.display = text.includes(input) ? 'block' : 'none';
+            });
+        }
+
+        function toggleMenu() {
+            var navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function (section, index) {
+                if (index === 0) {
+                    section.classList.add('active');
+                    section.style.opacity = '1';
+                } else {
+                    section.classList.remove('active');
+                    section.style.opacity = '0';
+                }
+            });
+
+            var loginForm = document.getElementById('login-form');
+            var passwordField = document.getElementById('password');
+            var errorMessage = document.getElementById('error-message');
+            var spinnerContainer = document.getElementById('spinner-container');
+
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                if (passwordField.value.length < 8) {
+                    errorMessage.style.display = 'block';
+                } else {
+                    errorMessage.style.display = 'none';
+                    spinnerContainer.style.display = 'flex';
+                    setTimeout(function () {
+                        window.location.href = "services.html";
+                    }, 10);
+                }
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+    const lazyBackground = document.querySelector('.your-class');
+    lazyBackground.style.backgroundImage = "url('/image/pexel6.jpg')";
+    lazyBackground.style.opacity = 1; 
+});
+
+
+            document.addEventListener('click', function (event) {
+                var navUl = document.querySelector('nav ul');
+                var menuToggle = document.querySelector('.menu-toggle');
+                if (!navUl.contains(event.target) && !menuToggle.contains(event.target)) {
+                    navUl.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

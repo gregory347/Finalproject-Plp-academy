@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goCode Services</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.pexels.com/photos/943096/pexels-photo-943096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    transition: background-image 0.5s ease;
+}
+
+
+@supports not (background-image: url('https://images.pexels.com/photos/943096/pexels-photo-943096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')) {
+    body {
+        background-image: url('https://images.pexels.com/photos/943096/pexels-photo-943096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); 
+    }
+}
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: transparent;
+            color: white;
+        }
+
+        nav {
+            background-color: transparent;
+            color: #0567a4;
+            width: 100%;
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            margin-top: -20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgb(43, 120, 22);
+            color: black;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .content-section {
+            padding: 10px;
+            background-color: transparent;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: rgb(10, 145, 8);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            background-color: rgb(16, 135, 214);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 25px;
+}
+
+
+        .tabs button.active {
+            background-color: #180471;
+        }
+
+        .tab-content {
+            display: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            flex-direction: column;
+
+        }
+        .tab-content ul li a {
+            color: rgb(18, 206, 18);  
+            font-weight: bold;  
+            transition: color 0.3s ease; 
+}
+
+        .tab-content ul li a:hover {
+            color: #0567a4;  
+}
+
+        .tab-content.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 9px;
+            padding: 2px;
+        }
+
+        .video-container {
+            flex: 1;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 320px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-text-container {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+
+        .video-text-container .video-container {
+            flex: 1;
+        }
+
+        .video-text-container .text-container {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .text-container p {
+            margin: 0 0 10px;
+        }
+
+        .testimonials-section {
+            background-color: rgb(17, 184, 184);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .testimonial {
+            background-color: rgb(10, 98, 199);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 200px;
+            text-align: center;
+            flex: 1 1 200px;
+        }
+
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .testimonial p {
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100vh;
+                background-color: rgb(7, 150, 221);
+                transition: all 0.3s ease;
+                z-index: 10;
+                padding-top: 60px;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                order: -1;
+            }
+
+            .menu-toggle i {
+                font-size: 1.5rem;
+                color: #fff;
+                margin-right: 10px;
+            }
+
+            nav ul li {
+                margin: 20px;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+
+            .video-text-container {
+                flex-direction: column;
+            }
+
+            .text-container {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+        }
+        .learning-process {
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: wheat;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 80%;
+            background-color: whitesmoke;
+            height: 8px;
+            border-radius: 10px;
+            margin: 10px 0;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #0ad5eb; 
+            border-radius: 10px;
+        }
+
+        .percentage {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/images/href.webp" type="image/webp">
+
+
+</head>
+
+<body>
+    <header>
+        <div class="logo" style="flex: 1;">
+            <h1>&lt;goCode&gt;</h1>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+            <li><a href="javascript:void(0)" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+
+        </ul>
+    </nav>
+    <main>
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab('frontend')">Front-end Development</button>
+            <button class="tab-link" onclick="openTab('backend')">Back-end Development</button>
+            <button class="tab-link" onclick="openTab('assignments')">Learn Code</button>
+        </div>
+        <div id="frontend" class="tab-content active">
+            <h2>Front-end Development</h2>
+            <p>Learn the in-demand front-end development skills with goCode.</p>
+            <h3>
+                <p>Front-end development entails this:</p>
+                <p>.HTML</p>
+                <p>.CSS</p>
+                <p>.JAVASCRIPT</p>
+            </h3>
+            <ul>
+                <li><a href="https://www.w3schools.com/html/" target="_blank">HTML Tutorial</a></li>
+                <li><a href="https://www.w3schools.com/css/" target="_blank">CSS Tutorial</a></li>
+                <li><a href="https://www.w3schools.com/js/" target="_blank">JavaScript Tutorial</a></li>
+            </ul>
+            <div class="video-text-container">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kUMe1FH4CHE?si=_nX48jg1Z2637n4K"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="text-container">
+                    <h3>Introduction to HTML</h3>
+                    <p>HTML is the standard markup language for creating web pages. It stands for Hyper Text Markup
+                        Language and is used to describe the structure of web pages using markup.</p>
+                </div>
+            </div>
+            <div class="video-text-container">
+                <div class="video-container">
+                    <iframe width="320" height="180" src="https://www.youtube.com/embed/UB1O30fR-EE" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="text-container">
+                    <h3>CSS Crash Course</h3>
+                    <p>CSS is used to control the style and layout of web pages. This crash course will help you get
+                        started with CSS and learn the basics.</p>
+                </div>
+            </div>
+            <div class="video-text-container">
+                <div class="video-container">
+                    <iframe width="320" height="180" src="https://www.youtube.com/embed/W6NZfCO5SIk" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="text-container">
+                    <h3>JavaScript Fundamentals</h3>
+                    <p>JavaScript is a versatile programming language used to create dynamic and interactive web pages.
+                        Learn the fundamentals of JavaScript with this tutorial.</p>
+                </div>
+            </div>
+            <section class="testimonials-section">
+                <h2>Testimonials</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial">
+                        <img src="/images/user 1.webp" alt="User 1">
+                        <p>goCode has been a game-changer for my career. The tutorials are easy to follow and the
+                            community is incredibly supportive.</p>
+                    </div>
+                    <div class="testimonial">
+                        <img src="/images/user 2.webp" alt="User 2">
+                        <p>The front-end development course helped me land my first job as a web developer. I can't
+                            thank
+                            goCode enough!</p>
+                    </div>
+                    <div class="testimonial">
+                        <img src="/images/user 3.webp" alt="User 3">
+                        <p>I've tried other coding platforms, but goCode stands out with its comprehensive and
+                            up-to-date content. Highly recommended!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="backend" class="tab-content">
+            <h2>Back-end Development</h2>
+            <p>Master the skills required to become a proficient back-end developer with goCode.</p>
+            <h3>Back-end development entails this:</h3>
+            <ul>
+                <li>Node.js</li>
+                <li>Python with frameworks Django, Flask</li>
+                <li>PHP with frameworks Laravel</li>
+                <li>Kotlin</li>
+                <li>R for Data analysis and Data science</li>
+            </ul>
+            <div class="video-text-container">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/w-7RQ46RgxU?si=y94g4pq0VmM1GCyR"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="text-container">
+                    <h3>Node.js Overview</h3>
+                    <p>Node.js is commonly used for creating fast and scalable server-side applications. It uses an
+                        event-driven, non-blocking I/O model, which makes it lightweight and efficient. It's a
+                        JavaScript runtime built on Chrome's V8 JavaScript engine, used for building fast and scalable
+                        server-side applications.</p>
+                </div>
+            </div>
+            <div class="video-text-container">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_uQrJ0TkZlc?si=P4D4zngWt50i3xj3"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="text-container">
+                    <h3>Python Crash Course</h3>
+                    <p>Python is a versatile and powerful programming language known for its easy-to-read syntax,
+                        extensive libraries, and applications in web development, data science, automation, and more.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="assignments" class="tab-content">
+            <h2>Learn Code</h2>
+            <p>Explore the world of programming and get started with these resources:</p>
+            <ul>
+                <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+                <li><a href="https://www.geeksforgeeks.org/" target="_blank">geeksforgeeks</a></li>
+                <li><a href="https://www.codecademy.com/learn" target="_blank">Codecademy</a></li>
+                <li><a href="https://www.freecodecamp.org/learn/" target="_blank">freeCodeCamp</a></li>
+                <li><a href="https://github.com/Asabeneh/30-Days-Of-Python/tree/master/05_Day_Lists" target="_blank">30
+                        days of learning Python</a></li>
+                <li><a href="https://github.com/Asabeneh/30-Days-Of-JavaScript" target="_blank">30 days of learning
+                        Javascript</a>
+                </li>
+            </ul>
+            <div class="learning-process">
+                <h2>Step-by-Step Learning Process</h2>
+                <ul>
+                    <li>
+                        <p>Learning from tutorials</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 20%;"></div>
+                        </div>
+                        <span class="percentage">20%</span>
+                    </li>
+                    <li>
+                        <p>Learn from online resources</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 25%;"></div>
+                        </div>
+                        <span class="percentage">25%</span>
+                    </li>
+                    <li>
+                        <p>writing code</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 30%;"></div>
+                        </div>
+                        <span class="percentage">30%</span>
+                    </li>
+                    <li>
+                        <p>Implement the logic of the code</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 15%;"></div>
+                        </div>
+                        <span class="percentage">15%</span>
+                    </li>
+                    <li>
+                        <p>Debugging and running codes</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 10%;"></div>
+                        </div>
+                        <span class="percentage">10%</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </main>
+    <script>
+        function openTab(tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(link => link.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('active');
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            sessionStorage.clear();          
+            window.location.href = "index.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const lazyBackground = document.querySelector('.your-class');
+    lazyBackground.style.backgroundImage = "url('/image/danny.jpg')"; 
+    lazyBackground.style.opacity = 1; 
+});
+window.addEventListener('scroll', function() {
+    var progressBars = document.querySelectorAll('.progress');
+    progressBars.forEach(function(bar) {
+        var width = bar.style.width;
+        bar.style.transition = 'width 1s ease-in-out';
+        bar.style.width = width;  
+    });
+});
+    function toggleMenu() {
+        const menu = document.querySelector('nav ul');
+        menu.classList.toggle('active');
+    }
+    document.body.addEventListener('click', function (e) {
+        const menu = document.querySelector('nav ul');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        }
+    });
+
+    </script>
+</body>
+
+</html>
